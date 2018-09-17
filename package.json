@@ -1,0 +1,16 @@
+{
+  "name": "mudee-image-removal",
+  "version": "1.0.0",
+  "description": "Remove duplicated images from mudee s3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.315.0",
+    "dotenv": "^6.0.0",
+    "npm": "^6.4.1"
+  }
+}
