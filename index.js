@@ -26,7 +26,11 @@ let deleteObject = name => {
   };
 
   S3.deleteObject(params, (err, data) => {
-
+    if(err){
+      console.log("Error removing file " + name);
+    } else {
+      console.log("Removed file " + name);
+    }
   });
 };
 
