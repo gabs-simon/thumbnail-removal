@@ -69,6 +69,7 @@ let createThumbnails = name => {
               }
             });
           })
+          .catch(err => console.log(err));
       });
     }
   })
