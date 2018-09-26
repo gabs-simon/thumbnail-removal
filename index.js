@@ -34,9 +34,9 @@ let deleteObject = name => {
 
   S3.deleteObject(params, (err, data) => {
     if(err){
-      console.log("Error removing file " + name);
+      console.log("[ERROR] Error removing file " + name);
     } else {
-      console.log("Removed file " + name);
+      console.log("[DELETE] " + name);
     }
   });
 };
@@ -49,7 +49,7 @@ let createThumbnails = name => {
 
   S3.getObject(params, (err1, inputImage) => {
     if(err1){
-      console.log("Error retrieving image from S3");
+      console.log("[ERROR] Error retrieving image from S3");
     } else {
       thumbnail_sizes.forEach(size => {
         const sizes = size.dimensions.split('x');
@@ -63,9 +63,9 @@ let createThumbnails = name => {
 
             S3.upload(uploadParams, function(err2){
               if(err2){
-                console.log("Error uploading image to S3");
+                console.log("[ERROR] Error uploading image to S3");
               } else {
-                console.log("Created image " + uploadParams.Key);
+                console.log("[CREATE] " + uploadParams.Key);
               }
             });
           })
@@ -94,6 +94,8 @@ let processSingleFile = file => {
     const isImage = (name.indexOf('.jpg') !== -1 || name.indexOf('.png') !== -1 || name.indexOf('.gif') !== -1 || name.indexOf('.jpeg') !== -1);
     if(isOnImageFolder && isImage){
       createThumbnails(name);
+    } else {
+      console.log("[SKIP] " + name);
     }
   }
 };
