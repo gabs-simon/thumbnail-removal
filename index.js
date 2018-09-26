@@ -64,6 +64,8 @@ let createThumbnails = name => {
             S3.upload(uploadParams, function(err2){
               if(err2){
                 console.log("Error uploading image to S3");
+              } else {
+                console.log("Created image " + uploadParams.Key);
               }
             });
           })
